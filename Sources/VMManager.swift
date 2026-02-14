@@ -56,7 +56,6 @@ class VMManager: NSObject, ObservableObject, VZVirtualMachineDelegate {
         hasIPSW = fm.fileExists(atPath: ipswPath)
         
         // 檢查磁碟大小來判斷是否真的安裝完成（至少 20GB 才算安裝成功）
-        let diskURL = URL(fileURLWithPath: diskPath)
         if let attrs = try? fm.attributesOfItem(atPath: diskPath),
            let size = attrs[.size] as? Int64 {
             let sizeGB = size / 1024 / 1024 / 1024
@@ -122,9 +121,10 @@ class VMManager: NSObject, ObservableObject, VZVirtualMachineDelegate {
             
             let installer = VZMacOSInstaller(virtualMachine: vm, restoringFromImageAt: ipswURL)
             
-            installObservation = installer.progress.observe(\.fractionCompleted) { [weak self] progress, _ in
-                Task { @MainActor in
-                    self?.installProgress = progress.fractionCompleted
+            installObservation = installer.progress.observe(\.fractionCompleted) { progress, _ in
+                let fraction = progress.fractionCompleted
+                Task { @MainActor [weak self] in
+                    self?.installProgress = fraction
                 }
             }
             
