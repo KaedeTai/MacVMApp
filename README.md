@@ -27,8 +27,8 @@ macOS 虛擬機管理工具，使用 Apple Virtualization Framework。
 ### 從原始碼編譯
 
 ```bash
-git clone https://github.com/yourusername/MacVMAppGUI.git
-cd MacVMAppGUI
+git clone https://github.com/yourusername/MacVMApp.git
+cd MacVMApp
 ./build.sh
 ```
 
@@ -87,14 +87,14 @@ cp -R .build/MacVM.app /Applications/
 ### 專案結構
 
 ```
-MacVMAppGUI/
+MacVMApp/
 ├── Package.swift
 ├── Sources/
 │   ├── MacVMApp.swift      # App 入口 + SwiftUI 視圖
 │   ├── VMManager.swift     # VM 管理邏輯
 │   ├── VMNativeView.swift  # VM 畫面顯示
 │   └── Info.plist
-├── MacVMAppGUI.entitlements
+├── MacVMApp.entitlements
 └── build.sh
 ```
 

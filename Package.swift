@@ -2,16 +2,16 @@
 import PackageDescription
 
 let package = Package(
-    name: "MacVMAppGUI",
+    name: "MacVMApp",
     platforms: [
         .macOS(.v14)
     ],
     products: [
-        .executable(name: "MacVMAppGUI", targets: ["MacVMAppGUI"])
+        .executable(name: "MacVMApp", targets: ["MacVMApp"])
     ],
     targets: [
         .executableTarget(
-            name: "MacVMAppGUI",
+            name: "MacVMApp",
             path: "Sources",
             exclude: ["Info.plist"]
         )
