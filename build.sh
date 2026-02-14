@@ -15,6 +15,7 @@ mkdir -p "$APP_DIR/Contents/Resources"
 
 cp .build/release/MacVMAppGUI "$APP_DIR/Contents/MacOS/MacVM"
 cp Sources/Info.plist "$APP_DIR/Contents/"
+cp Sources/AppIcon.icns "$APP_DIR/Contents/Resources/"
 
 # Sign the app bundle
 codesign --force --sign - --entitlements MacVMAppGUI.entitlements "$APP_DIR"
